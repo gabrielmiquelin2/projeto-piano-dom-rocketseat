@@ -44,3 +44,6 @@
 //clicar com o teclado
 window.addEventListener("keydown",playNote)// EventListener ele vai ficar ouvindo eventos de "keydown",toda vez que clicar na tecla ele vai disparar a função "event".
 
+
+
+//TESTANDO
