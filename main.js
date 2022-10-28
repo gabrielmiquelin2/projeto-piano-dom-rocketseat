@@ -7,17 +7,24 @@
 
 //Fazer ele tocar notas
  function playNote(Event){
-    console.log(Event.target)
-    
-    let audioKeyCode = getKeyCode(Event)
+
+   let audioKeyCode = getKeyCode(Event) 
+   
+   console.log(audioKeyCode)
+     
     //typed or pressed key
     const key = document.querySelector(`[data-key = "${audioKeyCode}"]`)
-    console.log(key)
-   //if key existis
   
+   //if key existis
+    const cantFoundAnyKey = !key
+  
+    if(cantFoundAnyKey){
+        return;
+    }
 
-
+    
    //play audio
+   
  }
 
  function getKeyCode (Event){
@@ -30,6 +37,7 @@
       keyCode = Event.target.datase.key;
   }
   
+  return keyCode;
 
   console.log(Event.type)
   console.log(keyCode)
