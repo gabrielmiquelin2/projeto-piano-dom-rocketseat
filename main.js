@@ -1,57 +1,59 @@
+//PEGAR TODAS AS  TECLAS
+const keys = document.querySelectorAll(".key")
 
-              //Lógica de coisas que preciso para montar essa aplicação
-
-//Pegar todas as teclas
- const keys = document.querySelectorAll(".key")
+console.log(keys)
 
 
-//Fazer ele tocar notas
- function playNote(Event){
 
-   let audioKeyCode = getKeyCode(Event) 
-   
-   console.log(audioKeyCode)
-     
-    //typed or pressed key
-    const key = document.querySelector(`[data-key = "${audioKeyCode}"]`)
-  
-   //if key existis
-    const cantFoundAnyKey = !key
-  
+
+//TOCAR NOTAS
+function playNote(event){
+
+//keyCode/qual o código que estou rodando
+let audioKeyCode = getKeyCode(event);
+
+
+
+  //tecla pressionada
+ const key = document.querySelector(`key[data-key="${audioKeyCode}"]`)
+ console.log(key)
+
+
+  //se a tecla existe
+   const cantFoundAnyKey = key
+    
+ 
     if(cantFoundAnyKey){
-        return;
+       return;
+      
     }
 
     
-   //play audio
-   
- }
+  //tocar audio
+   const audio = document.querySelector(`audio[data-key="${audioKeyCode}"]`)
+    audio.currentTime = 0;
+    audio.play()
+}
 
- function getKeyCode (Event){
+function getKeyCode(event){
   let keyCode;
 
-  const isKeyboard = Event.type === "keydown"//true and false
-  if(isKeyboard){
-     keyCode = Event.keyCode
+  const isKeyboard = event.type === "keydown" //isso ai vai me responder um verdadeiro ou falso
+  if (isKeyboard){
+     keyCode = event.keyCode
   }else{
-      keyCode = Event.target.datase.key;
+     keyCode = event.target.dataset.key
   }
-  
-  return keyCode;
-
-  console.log(Event.type)
-  console.log(keyCode)
- } 
-
-//Fazer ele cilicar com o mouse
-  keys.forEach( function(key){
-     key.addEventListener("click", playNote)
-  })
+     return keyCode
+}
 
 
-//clicar com o teclado
-window.addEventListener("keydown",playNote)// EventListener ele vai ficar ouvindo eventos de "keydown",toda vez que clicar na tecla ele vai disparar a função "event".
+//CLICAR COM O MOUSE
+keys.forEach( function (key) {
+    key.addEventListener("click", playNote)
+})
 
 
 
-//TESTANDO
+//CLICAR COM O TECLADO
+window.addEventListener("keydown", playNote)
