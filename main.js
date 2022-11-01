@@ -23,16 +23,14 @@ let audioKeyCode = getKeyCode(event);
    const cantFoundAnyKey = key
     
  
-    if(cantFoundAnyKey){
+   if(cantFoundAnyKey){
        return;
       
     }
 
-    
-  //tocar audio
-   const audio = document.querySelector(`audio[data-key="${audioKeyCode}"]`)
-    audio.currentTime = 0;
-    audio.play()
+//função tocar audio 
+ playAudio(audioKeyCode)
+   
 }
 
 function getKeyCode(event){
@@ -45,6 +43,13 @@ function getKeyCode(event){
      keyCode = event.target.dataset.key
   }
      return keyCode
+}
+
+  //tocar audio
+function playAudio(audioKeyCode){
+   const audio = document.querySelector(`audio[data-key="${audioKeyCode}"]`)
+    audio.currentTime = 0;
+    audio.play()
 }
 
 
